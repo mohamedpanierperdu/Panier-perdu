@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panier Perdu : récupère les paniers abandonnés de ta boutique</title>
+<meta name="description" content="Deux relances écrites et personnalisées pour récupérer tes paniers abandonnés. 29 $/mois, sans engagement, satisfait ou remboursé 14 jours.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Panier Perdu : récupère les paniers abandonnés de ta boutique">
+<meta property="og:description" content="Deux relances personnalisées, 29 $/mois, satisfait ou remboursé 14 jours.">
+<!-- À ajouter quand tu as une image : <meta property="og:image" content="https://TON-DOMAINE/apercu.png"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--sapin:#1f3d2e;--brique:#b8481c;--brique-fonce:#9a3a14;--creme:#f7f2e8;--papier:#fffdf8;--encre:#1b1f1c;--gris:#5b625d;--trait:#ddd5c4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"DM Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--encre);background:var(--creme)}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.12;margin:0 0 .5em;color:var(--sapin)}
+h1{font-size:clamp(2rem,8.5vw,3rem);font-weight:800}
+h2{font-size:clamp(1.5rem,6vw,2rem);font-weight:600}
+p{margin:0 0 1em}
+section{padding:44px 0;border-top:1px solid var(--trait)}
+.hero{padding:36px 0 44px;border-top:0}
+.marque{font-family:Fraunces,serif;font-weight:800;color:var(--sapin);padding:18px 0 0;font-size:1.1rem}
+.sous{font-size:1.15rem;color:var(--gris)}
+.btn{display:block;width:100%;text-align:center;background:var(--brique);color:#fff;font-weight:700;font-size:1.1rem;padding:18px 20px;border-radius:6px;text-decoration:none;min-height:56px}
+.btn:hover,.btn:focus-visible{background:var(--brique-fonce)}
+:focus-visible{outline:3px solid var(--sapin);outline-offset:2px}
+.mini{font-size:.9rem;color:var(--gris);margin-top:10px}
+.chiffre{background:var(--sapin);color:var(--creme);border-radius:6px;padding:22px}
+.chiffre b{font-family:Fraunces,serif;font-size:2.4rem;display:block;line-height:1.1}
+.benef{list-style:none;padding:0;margin:0}
+.benef li{padding:14px 0;border-bottom:1px solid var(--trait)}
+.benef li:last-child{border-bottom:0}
+.benef strong{display:block;color:var(--sapin)}
+.calc{background:var(--papier);border:1px solid var(--trait);border-radius:6px;padding:20px}
+label{display:block;font-weight:500;margin:0 0 6px}
+input{width:100%;font:inherit;font-size:1.1rem;padding:12px;border:1px solid #b9b09a;border-radius:6px;background:#fff;margin-bottom:16px}
+#res{font-size:1.05rem}
+#res b{color:var(--brique);font-family:Fraunces,serif;font-size:1.8rem}
+.offre{background:var(--papier);border:2px solid var(--sapin);border-radius:6px;padding:22px}
+.prix{font-family:Fraunces,serif;font-size:2.6rem;font-weight:800;color:var(--sapin);line-height:1}
+.prix small{font-family:"DM Sans",sans-serif;font-size:1rem;font-weight:400;color:var(--gris)}
+.garantie{border-left:4px solid var(--brique);padding:4px 0 4px 14px;margin:18px 0}
+.etapes{padding-left:20px}.etapes li{margin-bottom:10px}
+details{border-bottom:1px solid var(--trait);padding:14px 0}
+summary{cursor:pointer;font-weight:700;color:var(--sapin)}
+details p{margin:10px 0 0}
+footer{background:var(--sapin);color:#d9e2db;padding:32px 0 48px;font-size:.92rem}
+footer a{color:#fff}
+footer h3{color:#fff;font-size:1rem;margin:22px 0 6px}
+.todo{background:#ffe9a8;color:#000;padding:0 3px}
+@media(min-width:700px){.btn{display:inline-block;width:auto;padding:18px 36px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="marque">Panier Perdu</div>
+
+  <header class="hero">
+    <h1>Tes clients remplissent leur panier, puis partent. Récupère-les.</h1>
+    <p class="sous">Sept paniers sur dix sont abandonnés avant le paiement. Panier Perdu envoie deux relances personnalisées à ces clients, pour 29 $ par mois.</p>
+    <a class="btn" href="#offre" data-stripe>Commencer, c'est gratuit à estimer</a>
+    <p class="mini">Pour les boutiques Shopify et WooCommerce. Sans engagement.</p>
+  </header>
+
+  <section>
+    <h2>Calcule ce que tu perds</h2>
+    <div class="calc">
+      <label for="cmd">Commandes par mois</label>
+      <input id="cmd" type="number" inputmode="numeric" min="1" value="30">
+      <label for="pan">Panier moyen ($)</label>
+      <input id="pan" type="number" inputmode="numeric" min="1" value="50">
+      <p id="res" aria-live="polite"></p>
+      <p class="mini">Estimation prudente : environ 70 % des paniers sont abandonnés, nous en récupérons 5 %. Ton résultat réel dépendra de ta boutique.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ce que tu obtiens</h2>
+    <ul class="benef">
+      <li><strong>Deux relances, au bon moment</strong>Un premier message rappelle le panier, un second arrive plus tard, avec le nom du client et ses articles.</li>
+      <li><strong>Un code de réduction, si tu veux</strong>Tu peux l'ajouter à la seconde relance seulement, pour ne pas brader tes prix.</li>
+      <li><strong>Le chiffre d'affaires récupéré, en euros</strong>Tu vois combien chaque relance a rapporté, sans tableur.</li>
+    </ul>
+  </section>
+
+  <section id="offre">
+    <h2>Ton accès fondateur</h2>
+    <div class="offre">
+      <div class="prix">29 $<small> CAD par mois</small></div>
+      <p class="mini">Soit moins de 1 $ par jour. Relances illimitées, une boutique.</p>
+
+      <div class="garantie">
+        <strong>Satisfait ou remboursé pendant 14 jours.</strong>
+        Écris-nous par email dans les 14 jours suivant ton paiement, avec ton adresse de commande. Tu es remboursé intégralement sous 5 jours ouvrés, sans justification.
+      </div>
+
+      <a class="btn" href="#" data-stripe>Payer 29 $ et démarrer</a>
+      <p class="mini"><strong>Sans engagement, résiliable à tout moment.</strong> Paiement sécurisé par Stripe.</p>
+    </div>
+
+    <h2 style="margin-top:32px">Ce qui se passe après le paiement</h2>
+    <ol class="etapes">
+      <li>Tu reçois un email de confirmation de Stripe.</li>
+      <li>Nous te contactons sous 48 h pour connecter ta boutique.</li>
+      <li>Nous réglons tes deux relances avec toi, puis elles partent seules.</li>
+    </ol>
+    <p class="mini">Tu fais partie des premiers clients : la mise en place est faite à la main, avec toi.</p>
+  </section>
+
+  <section>
+    <h2>Questions fréquentes</h2>
+    <details><summary>Est-ce que ça marche pour ma boutique ?</summary><p>Si tu vends sur Shopify ou WooCommerce et que tu fais quelques dizaines de commandes par mois, oui. Si ça ne te convient pas, la garantie de 14 jours te protège.</p></details>
+    <details><summary>Combien de temps ça me prend ?</summary><p>Environ 15 minutes de ton côté pour la connexion de ta boutique. Le reste, nous nous en occupons.</p></details>
+    <details><summary>Et si je veux arrêter ?</summary><p>Tu résilies quand tu veux, par simple email. Aucun frais, aucun préavis. Tu ne paies pas le mois suivant.</p></details>
+    <details><summary>À quoi sert exactement ce que je paie ?</summary><p>Aux deux relances envoyées à tes clients qui abandonnent leur panier, à leur mise en place et à ton suivi du chiffre d'affaires récupéré.</p></details>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Panier Perdu</strong>
+    <h3>Mentions légales</h3>
+    <p>Éditeur : <span class="todo">[TON NOM OU RAISON SOCIALE]</span>, entreprise à propriétaire unique, NEQ <span class="todo">[TON NEQ, une fois inscrit]</span>.<br>
+    Adresse : <span class="todo">[TON ADRESSE]</span>. Contact : <span class="todo">[TON EMAIL]</span>.<br>
+    Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis.<br>
+    TPS/TVQ : <span class="todo">[numéros à indiquer une fois inscrit ; non obligatoire sous 30 000 $ de revenus]</span>.</p>
+
+    <h3>Conditions générales de vente</h3>
+    <p>Abonnement mensuel de 29 $ par boutique, payable par carte via Stripe, reconduit chaque mois. Résiliation à tout moment par email : l'abonnement s'arrête à la fin de la période déjà payée. Satisfait ou remboursé pendant 14 jours après le premier paiement, sur simple demande par email, remboursement sous 5 jours ouvrés. Le service consiste en l'envoi de deux relances par panier abandonné. Nous ne garantissons pas un montant de ventes récupérées. Droit applicable au Québec. Prix en dollars canadiens.</p>
+
+    <h3>Confidentialité</h3>
+    <p>Nous collectons ton email et les données de ta boutique, uniquement pour fournir le service. Elles ne sont jamais vendues. Les paiements sont traités par Stripe : nous ne voyons pas ta carte. Pour accéder à tes données ou les faire supprimer, écris à <span class="todo">[TON EMAIL]</span>.</p>
+  </div>
+</footer>
+
+<script>
+// 1) Colle ici ton lien de paiement Stripe (commence par https://buy.stripe.com/)
+var STRIPE_LINK = "https://buy.stripe.com/test_aFa14nbxUgj1gOoeVwfrW00";
+
+document.querySelectorAll("a[data-stripe]").forEach(function(a){
+  if (a.getAttribute("href") === "#" && STRIPE_LINK.indexOf("https://") === 0) a.href = STRIPE_LINK;
+});
+
+var cmd = document.getElementById("cmd"), pan = document.getElementById("pan"), res = document.getElementById("res");
+function calcul(){
+  var c = Math.max(0, parseFloat(cmd.value) || 0), p = Math.max(0, parseFloat(pan.value) || 0);
+  var abandonnes = Math.round(c * 70 / 30);
+  var perdu = abandonnes * p;
+  var recupere = Math.round(abandonnes * 0.05 * p);
+  var f = function(n){ return n.toLocaleString("fr-FR") + " $"; };
+  res.innerHTML = "Tu perds environ <b>" + abandonnes + " paniers</b> par mois, soit " + f(perdu) +
+    " de ventes. En récupérer 5 % te rapporterait <b>" + f(recupere) + "</b> par mois, pour 29 $ d'abonnement.";
+}
+cmd.addEventListener("input", calcul); pan.addEventListener("input", calcul); calcul();
+</script>
+</body>
+</html>
